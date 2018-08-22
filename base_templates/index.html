@@ -6,12 +6,29 @@
     <meta charset="UTF-8">
     <title>Pagina Principal</title>
     <link rel="stylesheet" href="{% static 'index.css' %}" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
 </head>
 <body>
-<h1> Ola {{ nome }} </h1>
+{% csrf_token %}
+<div class="container">
+<table id="establishments" class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                {% for column in cols %}
+                <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+  </table>
+</div>
 </body>
 </html>
 
 <script src="{% static '/js/jquery-1.11.3.min.js' %}"></script>
 <script src="{% static '/js/index.js' %}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 

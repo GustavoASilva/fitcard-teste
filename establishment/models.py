@@ -21,3 +21,7 @@ class Establishment(models.Model):
     def __str__(self):
         return self.razao_social
 
+    def get_category_display(self):
+        for code, label in constants.CATEGORIES_CHOICES:
+            if self.categoria == code:
+                return label
