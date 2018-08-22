@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from establishment import urls as establishment_urls
+from establishment.views import render_index
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index/', render_index, name='render_index'),
     path('establishment/', include(establishment_urls)),
 ]

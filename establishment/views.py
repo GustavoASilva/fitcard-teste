@@ -10,25 +10,18 @@ from rest_framework.response import Response
 
 
 def create_establishment(request):
-    form = EstablishmentForm(request.POST, None)
+    form = EstablishmentForm(request.POST or None)
     if form.is_valid():
         form.save()
     return render(request, 'establishment_form.html', {'form': form})
 
 
-class AllEstablishView(APIView):
-
-    def get(self, request):
-        establishs = Establishment.objects.all()
-        data = AllEstablishSerializer(establishs, many=True)
-        return Response(data.data)
-
-
-def delete_establishment(request, establishment_id):
-    establish = get_object_or_404(Establishment, pk= establishment_id)
-    if request.method == 'GET':
-        establish.delete()
-    return Response("ok")
+def update_establishment(request, establishment_id):
+    establish = get_object_or_404(Establishment, pk=establishment_id)
+    form = EstablishmentForm(request.POST or None, instance=establish)
+    if form.is_valid():
+        form.save()
+    return render(request, 'establishment_form.html', {'form': form})
 
 
 def render_index(request):
@@ -43,8 +36,16 @@ def render_index(request):
 
     return render(request, 'index.html', {'cols': cols})
 
-class Delete(APIView):
 
+class AllEstablishView(APIView):
+
+    def get(self, request):
+        establishs = Establishment.objects.all()
+        data = AllEstablishSerializer(establishs, many=True)
+        return Response(data.data)
+
+
+class DeleteEstablishmentApi(APIView):
     def post(self, request, establishment_id):
         establish = get_object_or_404(Establishment, pk=establishment_id)
         establish.delete()

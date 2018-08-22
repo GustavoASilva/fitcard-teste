@@ -1,11 +1,12 @@
 from django.urls import path
-from . views import create_establishment, delete_establishment, AllEstablishView, render_index, Delete
+from . views import create_establishment, update_establishment, AllEstablishView, render_index, DeleteEstablishmentApi
 
 
 urlpatterns = [
+
     path('new/', create_establishment, name='create'),
-    path('delete/<int:establishment_id>', delete_establishment, name='delete'),
+    path('edit/<int:establishment_id>', update_establishment, name='update'),
+
     path('api/all/', AllEstablishView.as_view()),
-    path('api/delete/<int:establishment_id>', Delete.as_view()),
-    path('index', render_index, name='render_index'),
+    path('api/delete/<int:establishment_id>', DeleteEstablishmentApi.as_view()),
 ]

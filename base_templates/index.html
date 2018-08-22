@@ -6,15 +6,33 @@
     <meta charset="UTF-8">
     <title>Pagina Principal</title>
     <link rel="stylesheet" href="{% static 'index.css' %}" >
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
 
 
 </head>
 <body>
+
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Collapsed content</h4>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <a class="navbar-brand" href="#">SGE - Sistema para Gerenciamento de Estabelecimentos</a>
+
+  </nav>
+</div>
+
+
 {% csrf_token %}
 <div class="container">
-<table id="establishments" class="table table-hover table-bordered">
-        <thead>
+<table id="establishments" class=" establish-grid table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
             <tr>
                 {% for column in cols %}
                 <th>{{ column }}</th>
@@ -30,5 +48,5 @@
 
 <script src="{% static '/js/jquery-1.11.3.min.js' %}"></script>
 <script src="{% static '/js/index.js' %}"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{% static '/js/bootstrap.js' %}"></script>
 
