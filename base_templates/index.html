@@ -15,8 +15,10 @@
 <div class="pos-f-t">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
-      <h4 class="text-white">Collapsed content</h4>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
+       <a href="/index">
+
+     <input class="btn " type="button" value="Home" >
+        </a>
     </div>
   </div>
   <nav class="navbar navbar-dark bg-dark">
@@ -30,7 +32,13 @@
 
 
 {% csrf_token %}
+
 <div class="container">
+    <a href="/establishment/new">
+
+     <input class="establish-grid btn btn-lg " type="button" value="Criar Estabelecimento" >
+        </a>
+
 <table id="establishments" class=" establish-grid table table-striped table-hover table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -47,6 +55,8 @@
 </html>
 
 <script src="{% static '/js/jquery-1.11.3.min.js' %}"></script>
+<script src="{% static '/js/jquery-ui.js' %}"></script>
+
 <script src="{% static '/js/index.js' %}"></script>
 <script src="{% static '/js/bootstrap.js' %}"></script>
 

@@ -1,15 +1,53 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'index.css' %}" >
+
+
     <title></title>
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit"> Salvar </button>
-    </form>
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+        <a href="/index">
 
+     <input class="btn " type="button" value="Home" >
+        </a>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <a class="navbar-brand" href="#">SGE - Sistema para Gerenciamento de Estabelecimentos</a>
+
+  </nav>
+</div>
+<div class="container establish-grid ">
+    <div class="establish-grid">
+    <form  id= "establish" method="POST">
+        <div class="form-group">
+        {% csrf_token %}
+            <table class="table table-striped table-hover table-bordered">
+
+            {{ form}}
+
+            </table>
+        <button type="submit" class="btn btn-primary"> Salvar </button>
+        </div>
+    </form>
+</div>
+    </div>
 </body>
 </html>
+
+<script src="{% static '/js/jquery-1.11.3.min.js' %}"></script>
+<script src="{% static '/js/jquery.mask.js' %}"></script>
+<script src="{% static '/js/form.js' %}"></script>
+
+<script src="{% static '/js/bootstrap.js' %}"></script>

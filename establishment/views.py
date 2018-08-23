@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from . forms import EstablishmentForm
 from . models import Establishment
@@ -13,6 +13,7 @@ def create_establishment(request):
     form = EstablishmentForm(request.POST or None)
     if form.is_valid():
         form.save()
+        return redirect('render_index')
     return render(request, 'establishment_form.html', {'form': form})
 
 
@@ -21,7 +22,12 @@ def update_establishment(request, establishment_id):
     form = EstablishmentForm(request.POST or None, instance=establish)
     if form.is_valid():
         form.save()
+        return redirect('render_index')
+
     return render(request, 'establishment_form.html', {'form': form})
+
+
+
 
 
 def render_index(request):
@@ -38,7 +44,6 @@ def render_index(request):
 
 
 class AllEstablishView(APIView):
-
     def get(self, request):
         establishs = Establishment.objects.all()
         data = AllEstablishSerializer(establishs, many=True)
